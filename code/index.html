@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>As-Rigid-As-Possible Shape Manipulation in WebGL and Javascript</title>
+  <script src="lib/three.js"></script>
+  <script src="lib/jquery.js"></script>
+  <script src="lib/math.js"></script>
+  <script src="lib/numeric.min.js"></script>
+  <script src="lib/vectorious.min.js"></script>
+  <script src="initialization.js"></script>
+  <script src="loaders/OBJLoader.js"></script>
+  <script src="extras.js"></script>
+  <script src="edge.js"></script>
+  <script src="frame.js"></script>
+  <script src="linearAlgebra.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="application.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <canvas id="drawingSurface" tabindex="1"></canvas>
+  <div class="controlPanel">
+    <div class="buttonContainer">
+      <div class="list-group buttonsList">
+        <button type="button" class="btn btn-primary captureKeyframe">Capture Keyframe</button>
+        <button type="button" class="btn btn-primary zoomIn">Zoom In</button>
+        <button type="button" class="btn btn-primary zoomOut">Zoom Out</button>
+        <button type="button" class="btn btn-primary boxObj">Load Simple Box.obj</button>
+        <button type="button" class="btn btn-primary manObj">Load Man.obj</button>
+        <button type="button" class="btn btn-warning barycentricCoord">Enable Barycentric Coordinates</button>
+        <button type="button" class="btn btn-danger reset">Reset</button>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Weight Value</span>
+          </div>
+          <input type="number" placeholder="1000" class="form-control weightInput" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="card messagesBox">
+        <div class="card-body infoText"></div>
+      </div>
+    </div>
+  </div>
+  <div class="framesPanel">
+    <p class="framesListTitle">Frames List</p>
+    <div class="framesContainer">
+    </div>
+  </div>
+</body>
+<script>
+
+$( document ).ready(function() {
+  var model = localStorage.getItem("model");
+  if(!model){ model = 'models/man.obj'};
+  initialization(model);
+  updateScene();
+});
+
+</script>
+</html>
